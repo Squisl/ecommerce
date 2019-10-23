@@ -1,0 +1,9 @@
+.nav__link {
+  font-size: 0.9rem;
+  color: black;
+  text-decoration: none;
+}
+
+.nav__link_orange {
+  color: var(--orange);
+}

@@ -1,0 +1,20 @@
+.header {
+  border-bottom: 1px solid black;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 4em;
+}
+
+.logo__container {
+  width: 9em;
+}
+
+.logo {
+  width: 100%;
+}
+
+.header__nav > *:not(:last-child) {
+  margin-right: 4em;
+}

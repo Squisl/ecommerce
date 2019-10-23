@@ -1,0 +1,17 @@
+html {
+  box-sizing: border-box;
+}
+
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+.app {
+  font-family: "Nunito", sans-serif;
+}
+
+:root {
+  --orange: rgb(246, 125, 37);
+}
