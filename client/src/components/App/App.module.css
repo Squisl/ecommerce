@@ -10,6 +10,10 @@ html {
 
 .app {
   font-family: "Nunito", sans-serif;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
 }
 
 :root {
