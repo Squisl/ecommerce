@@ -51,6 +51,7 @@ const Carousel = ({children}) => {
       <div className={styles.carousel__indicator}>
         {[...Array(children.length)].map((_, index) => (
           <button
+            key={index}
             className={`${styles.carousel__indicator__button} ${
               index === currentSlide ? styles.button_selected : ""
             }`}

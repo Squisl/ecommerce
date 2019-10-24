@@ -18,4 +18,7 @@ html {
 
 :root {
   --orange: rgb(246, 125, 37);
+  --dark-red: #7c0a02;
+  --red: #b22222;
+  --yellow: #f1bc31;
 }

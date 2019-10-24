@@ -1,0 +1,16 @@
+.fact__box {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 2em;
+  color: white;
+}
+
+.fact__digit {
+  font-size: 2rem;
+}
+
+.fact__description {
+  font-size: 1.5rem;
+}

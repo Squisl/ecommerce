@@ -8,8 +8,8 @@ const CarouselSlide = ({title, facts = [], image}) => {
       <div className={styles.carousel__slide__description}>
         <p className={styles.carousel__slide__title}>{title}</p>
         <ul className={styles.carousel__slide__facts}>
-          {facts.map(fact => (
-            <li>{fact}</li>
+          {facts.map((fact, index) => (
+            <li key={index}>{fact}</li>
           ))}
         </ul>
       </div>

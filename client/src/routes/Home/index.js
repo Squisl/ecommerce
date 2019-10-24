@@ -8,6 +8,7 @@ import Bonsai_2 from "../../assets/images/bonsai_2.jpg"
 import Bonsai_3 from "../../assets/images/bonsai_3.jpg"
 import Bonsai_4 from "../../assets/images/bonsai_4.jpg"
 import ProductCard from "../../components/ProductCard/ProductCard"
+import FactBox from "../../components/FactBox/FactBox"
 
 const Home = () => {
   return (
@@ -48,6 +49,12 @@ const Home = () => {
           ]}
         />
       </Carousel>
+      <section className={styles.home__facts}>
+        <FactBox number={69} description="Products" color="var(--dark-red)" />
+        <FactBox number={8} description="Categories" color="var(--orange)" />
+        <FactBox number={543} description="Customers" color="var(--red)" />
+        <FactBox number={24} description="Countries" color="var(--yellow)" />
+      </section>
       <section className={styles.home__best__sellers}>
         <p className={styles.best__sellers__title}>Best Sellers</p>
         <div className={styles.best__sellers__grid}>
