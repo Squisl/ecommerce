@@ -1,0 +1,25 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  padding: 5em;
+  width: 20em;
+}
+
+.sidebar > *:not(:last-child) {
+  margin-bottom: 2em;
+}
+
+.sidebar__group {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.sidebar__group > *:not(:last-child) {
+  margin-bottom: 0.5em;
+}
+
+.group__title {
+  display: inline-block;
+  font-weight: 800;
+}

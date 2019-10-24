@@ -7,7 +7,8 @@
   grid-template-columns: repeat(4, auto);
   justify-content: center;
   gap: 2em;
-  margin-top: 5em;
+  padding: 5em 0;
+  background: var(--light-grey);
 }
 
 .home__best__sellers {

@@ -1,0 +1,70 @@
+.container {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.checkbox {
+  border: 1px solid black;
+  width: 1em;
+  height: 1em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+}
+
+.checkmark {
+  color: white;
+  position: absolute;
+  top: 0;
+}
+
+.input {
+  opacity: 0;
+}
+
+.checked {
+  background: var(--orange);
+  position: relative;
+}
+
+.label {
+  margin: 0 0.3em;
+}
+
+.tooltip__icon {
+  font-size: 0.8em;
+  color: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+.tooltip__text {
+  background: rgba(0, 0, 0, 0.5);
+  font-size: 0.8rem;
+  color: white;
+  padding: 0.5em 0.8em;
+  position: absolute;
+  right: 0;
+  width: 14em;
+  display: none;
+  transform: translateX(130%);
+  transition: display 0.3s ease;
+  border-radius: 6px;
+}
+
+.tooltip__text::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 0%;
+  transform: translate(-50%, -50%);
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: transparent rgba(0, 0, 0, 0.5) transparent transparent;
+}
+
+.tooltip__icon:hover ~ .tooltip__text {
+  display: inline-block;
+}

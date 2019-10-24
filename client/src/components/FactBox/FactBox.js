@@ -12,7 +12,6 @@ const FactBox = ({number, description, color}) => {
   })
 
   React.useEffect(() => {
-    console.log(entry.intersectionRatio)
     if (entry.intersectionRatio > 0.5) {
       animateValue(0, number, 2000, setDigit)
       ref(null)
