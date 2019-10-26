@@ -11,14 +11,35 @@
   z-index: 5;
 }
 
+.header__left {
+  display: flex;
+  align-items: center;
+}
+
+.header__left > *:not(:last-child) {
+  margin-right: 1em;
+}
+
 .logo__container {
   width: 9em;
+  height: 5em;
+  display: flex;
+  align-items: center;
+  overflow: hidden;
 }
 
 .logo {
   width: 100%;
 }
 
+.header__nav {
+  display: flex;
+}
+
 .header__nav > *:not(:last-child) {
   margin-right: 4em;
+}
+
+.header__right > *:not(:last-child) {
+  margin-right: 1em;
 }

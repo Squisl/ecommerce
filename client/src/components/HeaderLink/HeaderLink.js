@@ -3,13 +3,13 @@ import PropTypes from "prop-types"
 import {NavLink} from "react-router-dom"
 import styles from "./HeaderLink.module.css"
 
-const HeaderLink = ({exact, path, label}) => (
+const HeaderLink = ({children, exact, path, label}) => (
   <NavLink
     exact={exact}
     to={path}
     className={styles.nav__link}
     activeClassName={styles.nav__link_orange}>
-    {label}
+    {children} <span className={styles.label}>{label}</span>
   </NavLink>
 )
 

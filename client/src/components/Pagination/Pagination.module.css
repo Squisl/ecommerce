@@ -16,6 +16,7 @@
   border-radius: 3px;
   color: var(--orange);
   cursor: pointer;
+  outline: none;
 }
 
 .pagination__page {
@@ -25,6 +26,7 @@
   border: none;
   border-radius: 3px;
   cursor: pointer;
+  outline: none;
 }
 
 .selected {
