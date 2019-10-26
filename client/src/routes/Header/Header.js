@@ -1,11 +1,13 @@
 import React from "react"
 import {Link} from "react-router-dom"
+import {FaShoppingBag, FaInfo, FaWpforms} from "react-icons/fa"
+import {MdEventNote} from "react-icons/md"
 import styles from "./Header.module.css"
 import Logo from "../../assets/images/logo.png"
 import HeaderLink from "../../components/HeaderLink/HeaderLink"
-import {FaShoppingBag, FaInfo, FaWpforms} from "react-icons/fa"
-import {MdEventNote} from "react-icons/md"
 import Button from "../../components/Button"
+import LoginModal from "../../components/LoginModal"
+import RegisterModal from "../../components/RegisterModal"
 
 const Header = () => {
   return (
@@ -32,6 +34,8 @@ const Header = () => {
       <div className={styles.header__right}>
         <Button label="Log in" />
         <Button label="Register" />
+        {false && <LoginModal />}
+        {false && <RegisterModal />}
       </div>
     </header>
   )

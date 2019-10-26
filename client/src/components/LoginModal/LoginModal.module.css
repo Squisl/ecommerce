@@ -1,0 +1,19 @@
+.login__modal__title {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 700;
+  margin-bottom: 1.5em;
+}
+
+.login__modal__form {
+  display: flex;
+  flex-direction: column;
+}
+
+.login__modal__form > *:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.form__button {
+  align-self: flex-end;
+}

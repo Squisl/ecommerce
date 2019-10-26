@@ -2,8 +2,10 @@ import React from "react"
 import PropTypes from "prop-types"
 import styles from "./styles.module.css"
 
-const Button = ({label, onClick}) => (
-  <button onClick={onClick} className={styles.button}>
+const Button = ({label, onClick, className}) => (
+  <button
+    onClick={onClick}
+    className={`${styles.button} ${className ? className : ""}`}>
     {label}
   </button>
 )

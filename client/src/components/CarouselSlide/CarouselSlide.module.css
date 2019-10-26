@@ -24,6 +24,7 @@
 
 .carousel__slide__facts {
   padding-left: 0;
+  list-style-type: square;
 }
 
 .carousel__slide__facts > *:not(:last-child) {

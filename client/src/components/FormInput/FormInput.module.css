@@ -1,0 +1,31 @@
+.form__input {
+  border: 1px solid black;
+  position: relative;
+  padding: 0.8em 1em;
+  border-radius: 3px;
+}
+
+.form__input:hover {
+  cursor: text;
+}
+
+.input {
+  outline: none;
+  width: 100%;
+  border: none;
+}
+
+.input:focus ~ .input__label,
+.input:not(:placeholder-shown) ~ .input__label {
+  top: 5%;
+  font-size: 0.7rem;
+}
+
+.input__label {
+  position: absolute;
+  top: 30%;
+  left: 7%;
+  transition: all 0.3s ease;
+  pointer-events: none;
+  color: var(--orange);
+}

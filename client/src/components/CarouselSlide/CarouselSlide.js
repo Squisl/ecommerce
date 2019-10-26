@@ -9,7 +9,9 @@ const CarouselSlide = ({title, facts = [], image}) => {
         <p className={styles.carousel__slide__title}>{title}</p>
         <ul className={styles.carousel__slide__facts}>
           {facts.map((fact, index) => (
-            <li key={index}>{fact}</li>
+            <li key={index} className={styles.slide__fact}>
+              {fact}
+            </li>
           ))}
         </ul>
       </div>
