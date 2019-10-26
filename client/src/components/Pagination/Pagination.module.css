@@ -1,0 +1,33 @@
+.pagination {
+  margin: 4em 0 2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.pagination > *:not(:last-child) {
+  margin-right: 0.5em;
+}
+
+.pagination__arrow {
+  padding: 0.6em 1em 0.5em;
+  background: white;
+  border: 2px solid var(--orange);
+  border-radius: 3px;
+  color: var(--orange);
+  cursor: pointer;
+}
+
+.pagination__page {
+  width: 3em;
+  height: 3em;
+  font-weight: 800;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.selected {
+  background: var(--orange);
+  color: white;
+}

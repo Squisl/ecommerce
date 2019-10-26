@@ -1,0 +1,11 @@
+.shop {
+  display: flex;
+}
+
+.shop__main {
+  display: flex;
+  flex-direction: column;
+  padding: 5em;
+  padding-left: 0;
+  align-items: center;
+}

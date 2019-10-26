@@ -26,6 +26,9 @@ const Checkbox = ({label, tooltip}) => {
   )
 }
 
-Checkbox.propTypes = {}
+Checkbox.propTypes = {
+  label: PropTypes.string.isRequired,
+  tooltip: PropTypes.string.isRequired,
+}
 
 export default Checkbox

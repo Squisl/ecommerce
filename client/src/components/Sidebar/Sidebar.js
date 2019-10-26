@@ -2,6 +2,7 @@ import React from "react"
 import PropTypes from "prop-types"
 import styles from "./Sidebar.module.css"
 import Checkbox from "../Checkbox/Checkbox"
+import PriceInput from "../PriceInput/PriceInput"
 
 const Sidebar = props => {
   return (
@@ -25,6 +26,10 @@ const Sidebar = props => {
       </div>
       <div className={styles.sidebar__group}>
         <span className={styles.group__title}>Price</span>
+        <div className={styles.price__inputs}>
+          <PriceInput placeholder="Min" />
+          <PriceInput placeholder="Max" />
+        </div>
       </div>
     </div>
   )

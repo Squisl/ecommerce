@@ -1,8 +1,8 @@
 .sidebar {
   display: flex;
   flex-direction: column;
-  padding: 5em;
-  width: 20em;
+  margin: 5em 4em;
+  min-width: 10em;
 }
 
 .sidebar > *:not(:last-child) {
@@ -22,4 +22,12 @@
 .group__title {
   display: inline-block;
   font-weight: 800;
+}
+
+.price__inputs {
+  display: flex;
+}
+
+.price__inputs > *:not(:last-child) {
+  margin-right: 0.5em;
 }
