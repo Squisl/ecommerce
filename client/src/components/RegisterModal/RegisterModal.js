@@ -1,25 +1,47 @@
-import React from "react"
+import React, {useState} from "react"
 import PropTypes from "prop-types"
 import styles from "./RegisterModal.module.css"
-import Modal from "../Modal/Modal"
-import FormInput from "../FormInput/FormInput"
+import Modal from "../Modal"
+import FormInput from "../FormInput"
 import Button from "../Button"
 
-const RegisterModal = props => {
+const RegisterModal = ({toggleRegister}) => {
+  const [firstName, setFirstName] = useState("")
+  const [lastName, setLastName] = useState("")
+  const [email, setEmail] = useState("")
+  const [password, setPassword] = useState("")
+
+  const update = fn => e => fn(e.target.value)
+
   return (
-    <Modal>
+    <Modal close={toggleRegister}>
       <span className={styles.register__modal__title}>Join Us</span>
       <form className={styles.register__modal__form} autoComplete="off">
-        <FormInput label="First Name" />
-        <FormInput label="Last Name" />
-        <FormInput label="Email" />
-        <FormInput label="Password" type="password" />
+        <FormInput
+          label="First Name"
+          value={firstName}
+          onChange={update(setFirstName)}
+        />
+        <FormInput
+          label="Last Name"
+          value={lastName}
+          onChange={update(setLastName)}
+        />
+        <FormInput label="Email" value={email} onChange={update(setEmail)} />
+        <FormInput
+          label="Password"
+          type="password"
+          value={password}
+          onChange={update(setPassword)}
+        />
         <Button label="Register" className={styles.form__button} />
       </form>
     </Modal>
   )
 }
 
-RegisterModal.propTypes = {}
+RegisterModal.propTypes = {
+  toggleRegister: PropTypes.func.isRequired,
+}
 
 export default RegisterModal

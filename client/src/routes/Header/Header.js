@@ -9,7 +9,7 @@ import Button from "../../components/Button"
 import LoginModal from "../../components/LoginModal"
 import RegisterModal from "../../components/RegisterModal"
 
-const Header = () => {
+const Header = ({toggleRegister, toggleLogin, modal}) => {
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -32,10 +32,10 @@ const Header = () => {
         </nav>
       </div>
       <div className={styles.header__right}>
-        <Button label="Log in" />
-        <Button label="Register" />
-        {false && <LoginModal />}
-        {false && <RegisterModal />}
+        <Button label="Log in" onClick={toggleLogin} />
+        <Button label="Register" onClick={toggleRegister} />
+        {modal.login && <LoginModal />}
+        {modal.register && <RegisterModal />}
       </div>
     </header>
   )

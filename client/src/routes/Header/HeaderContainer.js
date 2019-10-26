@@ -1,11 +1,14 @@
-import { connect } from "react-redux";
-import Header from "./Header";
+import {connect} from "react-redux"
+import Header from "./Header"
+import {toggleRegister, toggleLogin} from "../../modules/modal"
 
-const mapStateToProps = state => ({});
+const mapStateToProps = state => ({
+  modal: state.modal,
+})
 
-const mapDispatchToProps = {};
+const mapDispatchToProps = {toggleRegister, toggleLogin}
 
 export default connect(
   mapStateToProps,
-  mapDispatchToProps
-)(Header);
+  mapDispatchToProps,
+)(Header)

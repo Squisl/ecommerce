@@ -1,6 +1,6 @@
 import React, {useRef} from "react"
 import PropTypes from "prop-types"
-import styles from "./FormInput.module.css"
+import styles from "./styles.module.css"
 
 const FormInput = ({label, value, onChange, type}) => {
   const input = useRef(null)
@@ -10,7 +10,7 @@ const FormInput = ({label, value, onChange, type}) => {
   return (
     <div className={styles.form__input} onClick={focus}>
       <input
-        id="form__input"
+        id={label}
         className={styles.input}
         placeholder=" "
         ref={input}
@@ -18,7 +18,7 @@ const FormInput = ({label, value, onChange, type}) => {
         onChange={onChange}
         type={type}
       />
-      <label htmlFor="form__input" className={styles.input__label}>
+      <label htmlFor={label} className={styles.input__label}>
         {label}
       </label>
     </div>
@@ -27,7 +27,7 @@ const FormInput = ({label, value, onChange, type}) => {
 
 FormInput.propTypes = {
   label: PropTypes.string.isRequired,
-  value: PropTypes.func.isRequired,
+  value: PropTypes.string.isRequired,
   onChange: PropTypes.func.isRequired,
 }
 
