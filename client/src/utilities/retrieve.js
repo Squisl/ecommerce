@@ -1,5 +1,5 @@
 const retrieve = (url, method = "GET", body = {}) => {
-  const options = {method, headers: {}}
+  const options = {method, headers: {}, credentials: "include"}
   const token = localStorage.getItem("accessToken")
   if (token) {
     options.headers = {

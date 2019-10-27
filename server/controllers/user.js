@@ -1,4 +1,5 @@
 const bcrypt = require("bcrypt");
+const jwt = require("jsonwebtoken");
 const { user } = require("../queries");
 const createToken = require("../utilities/createToken");
 
@@ -94,7 +95,19 @@ const login = async (req, res) => {
   }
 };
 
+const logout = (_, res) => {
+  res.clearCookie("jwt");
+  res.send({ msg: "success" });
+};
+
+const reload = async (req, res) => {
+  const { id, first_name, last_name, email } = req.user;
+  res.send({ id, first_name, last_name, email });
+};
+
 module.exports = {
   register,
-  login
+  login,
+  logout,
+  reload
 };

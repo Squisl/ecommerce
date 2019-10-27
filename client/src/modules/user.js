@@ -3,11 +3,16 @@ import {toggleRegister, toggleLogin} from "./modal"
 
 // Action Types
 const RECEIVE_USER_SESSION = "RECEIVE_USER_SESSION"
+const CLEAR_USER_SESSION = "CLEAR_USER_SESSION"
 
 // Action Creators
 export const receiveUserSession = user => ({
   type: RECEIVE_USER_SESSION,
   user,
+})
+
+export const clearUserSession = () => ({
+  type: CLEAR_USER_SESSION,
 })
 
 export const register = data => dispatch => {
@@ -26,9 +31,30 @@ export const login = data => dispatch => {
   })
 }
 
+export const logout = () => async dispatch => {
+  try {
+    localStorage.removeItem("accessToken")
+    await retrieve("/api/user/logout")
+    dispatch(clearUserSession())
+  } catch (e) {
+    console.error(e)
+  }
+}
+
+export const reload = setLoading => async dispatch => {
+  try {
+    const result = await retrieve("/api/user/reload")
+    dispatch(receiveUserSession(result))
+    setLoading(false)
+  } catch (e) {
+    console.error(e)
+  }
+}
+
 // Initial state of the reducer
 const initialState = {
   session: {},
+  authenticated: false,
 }
 // Reducer
 export default (state = initialState, action) => {
@@ -37,6 +63,13 @@ export default (state = initialState, action) => {
       return {
         ...state,
         session: action.user,
+        authenticated: true,
+      }
+    case CLEAR_USER_SESSION:
+      return {
+        ...state,
+        session: {},
+        authenticated: false,
       }
     default:
       return state

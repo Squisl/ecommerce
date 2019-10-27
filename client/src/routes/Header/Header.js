@@ -9,7 +9,25 @@ import Button from "../../components/Button"
 import LoginModal from "../../components/LoginModal"
 import RegisterModal from "../../components/RegisterModal"
 
-const Header = ({toggleRegister, toggleLogin, modal}) => {
+const Header = ({toggleRegister, toggleLogin, modal, user, logout}) => {
+  const conditional = () => {
+    if (user.authenticated) {
+      return (
+        <>
+          <Button label="Log out" onClick={logout} />
+        </>
+      )
+    } else {
+      return (
+        <>
+          <Button label="Log in" onClick={toggleLogin} />
+          <Button label="Register" onClick={toggleRegister} />
+          {modal.login && <LoginModal />}
+          {modal.register && <RegisterModal />}
+        </>
+      )
+    }
+  }
   return (
     <header className={styles.header}>
       <div className={styles.header__left}>
@@ -31,12 +49,7 @@ const Header = ({toggleRegister, toggleLogin, modal}) => {
           </HeaderLink>
         </nav>
       </div>
-      <div className={styles.header__right}>
-        <Button label="Log in" onClick={toggleLogin} />
-        <Button label="Register" onClick={toggleRegister} />
-        {modal.login && <LoginModal />}
-        {modal.register && <RegisterModal />}
-      </div>
+      <div className={styles.header__right}>{conditional()}</div>
     </header>
   )
 }
