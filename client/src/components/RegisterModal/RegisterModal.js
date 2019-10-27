@@ -5,7 +5,7 @@ import Modal from "../Modal"
 import FormInput from "../FormInput"
 import Button from "../Button"
 
-const RegisterModal = ({toggleRegister}) => {
+const RegisterModal = ({toggleRegister, register}) => {
   const [firstName, setFirstName] = useState("")
   const [lastName, setLastName] = useState("")
   const [email, setEmail] = useState("")
@@ -13,10 +13,24 @@ const RegisterModal = ({toggleRegister}) => {
 
   const update = fn => e => fn(e.target.value)
 
+  const handleSubmit = e => {
+    e.preventDefault()
+
+    register({
+      first_name: firstName,
+      last_name: lastName,
+      email,
+      password,
+    })
+  }
+
   return (
     <Modal close={toggleRegister}>
       <span className={styles.register__modal__title}>Join Us</span>
-      <form className={styles.register__modal__form} autoComplete="off">
+      <form
+        className={styles.register__modal__form}
+        autoComplete="off"
+        onSubmit={handleSubmit}>
         <FormInput
           label="First Name"
           value={firstName}

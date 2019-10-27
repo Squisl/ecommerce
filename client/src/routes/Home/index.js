@@ -1,4 +1,4 @@
-import React from "react"
+import React, {useEffect} from "react"
 import styles from "./styles.module.css"
 import Carousel from "../../components/Carousel/Carousel"
 import CarouselSlide from "../../components/CarouselSlide/CarouselSlide"
@@ -11,6 +11,10 @@ import ProductCard from "../../components/ProductCard/ProductCard"
 import FactBox from "../../components/FactBox/FactBox"
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Saisei | Home"
+  }, [])
+
   return (
     <div className={styles.home}>
       <Carousel>

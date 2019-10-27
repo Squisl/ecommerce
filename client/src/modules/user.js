@@ -1,3 +1,6 @@
+import retrieve from "../utilities/retrieve"
+import {toggleRegister, toggleLogin} from "./modal"
+
 // Action Types
 const RECEIVE_USER_SESSION = "RECEIVE_USER_SESSION"
 
@@ -6,6 +9,22 @@ export const receiveUserSession = user => ({
   type: RECEIVE_USER_SESSION,
   user,
 })
+
+export const register = data => dispatch => {
+  retrieve("/api/user/register", "POST", data).then(data => {
+    dispatch(receiveUserSession(data.user))
+    localStorage.setItem("accessToken", data.token)
+    dispatch(toggleRegister())
+  })
+}
+
+export const login = data => dispatch => {
+  retrieve("/api/user/login", "POST", data).then(data => {
+    dispatch(receiveUserSession(data.user))
+    localStorage.setItem("accessToken", data.token)
+    dispatch(toggleLogin())
+  })
+}
 
 // Initial state of the reducer
 const initialState = {
