@@ -1,5 +1,5 @@
 import React from "react"
-import {Link} from "react-router-dom"
+import {Link, withRouter} from "react-router-dom"
 import {FaShoppingBag, FaInfo, FaWpforms} from "react-icons/fa"
 import {MdEventNote} from "react-icons/md"
 import styles from "./Header.module.css"
@@ -9,11 +9,25 @@ import Button from "../../components/Button"
 import LoginModal from "../../components/LoginModal"
 import RegisterModal from "../../components/RegisterModal"
 
-const Header = ({toggleRegister, toggleLogin, modal, user, logout}) => {
+const Header = ({
+  toggleRegister,
+  toggleLogin,
+  modal,
+  user,
+  logout,
+  history,
+}) => {
   const conditional = () => {
     if (user.authenticated) {
       return (
         <>
+          {user.session.role === "admin" && (
+            <Button
+              label="Dashboard"
+              className={styles.dashboard}
+              onClick={() => history.push("/dashboard")}
+            />
+          )}
           <Button label="Log out" onClick={logout} />
         </>
       )
@@ -54,4 +68,4 @@ const Header = ({toggleRegister, toggleLogin, modal, user, logout}) => {
   )
 }
 
-export default Header
+export default withRouter(Header)

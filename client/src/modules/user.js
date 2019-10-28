@@ -1,5 +1,6 @@
 import retrieve from "../utilities/retrieve"
 import {toggleRegister, toggleLogin} from "./modal"
+import {receiveError} from "./error"
 
 // Action Types
 const RECEIVE_USER_SESSION = "RECEIVE_USER_SESSION"
@@ -15,20 +16,29 @@ export const clearUserSession = () => ({
   type: CLEAR_USER_SESSION,
 })
 
-export const register = data => dispatch => {
-  retrieve("/api/user/register", "POST", data).then(data => {
-    dispatch(receiveUserSession(data.user))
-    localStorage.setItem("accessToken", data.token)
+export const register = data => async dispatch => {
+  try {
+    const result = await retrieve("/api/user/register", "POST", data)
+    dispatch(receiveUserSession(result.user))
+    localStorage.setItem("accessToken", result.token)
     dispatch(toggleRegister())
-  })
+  } catch (e) {
+    console.error(e)
+    dispatch(receiveError(e))
+  }
 }
 
-export const login = data => dispatch => {
-  retrieve("/api/user/login", "POST", data).then(data => {
-    dispatch(receiveUserSession(data.user))
-    localStorage.setItem("accessToken", data.token)
+export const login = data => async dispatch => {
+  try {
+    const result = await retrieve("/api/user/login", "POST", data)
+    console.log("DATA:", result)
+    dispatch(receiveUserSession(result.user))
+    localStorage.setItem("accessToken", result.token)
     dispatch(toggleLogin())
-  })
+  } catch (e) {
+    console.error(e)
+    dispatch(receiveError(e))
+  }
 }
 
 export const logout = () => async dispatch => {

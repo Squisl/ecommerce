@@ -43,3 +43,7 @@
 .header__right > *:not(:last-child) {
   margin-right: 1em;
 }
+
+button.dashboard {
+  background: black;
+}

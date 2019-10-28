@@ -4,7 +4,7 @@
   "description": "client-side of the 'Saisei' application",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --https --open --mode development",
+    "start": "webpack-dev-server --open --mode development",
     "build": "webpack --mode production",
     "test": "jest",
     "lint": "eslint src",

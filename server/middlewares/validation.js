@@ -30,11 +30,15 @@ const check = (schema, param) => (req, res, next) => {
   const { error } = schema.validate(req[param], { abortEarly: false });
 
   if (error) {
-    return res
-      .status(422)
-      .send(error.details.map(err => ({ [err.path]: err.message })));
+    return res.status(422).send(
+      error.details.reduce((acc, curr) => {
+        acc[curr.path] = curr.message;
+        return acc;
+      }, {})
+    );
+  } else {
+    next();
   }
-  next();
 };
 
 module.exports = {

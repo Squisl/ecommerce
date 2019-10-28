@@ -1,4 +1,6 @@
-const retrieve = (url, method = "GET", body = {}) => {
+import getDigit from "./getDigit"
+
+export default async (url, method = "GET", body = {}) => {
   const options = {method, headers: {}, credentials: "include"}
   const token = localStorage.getItem("accessToken")
   if (token) {
@@ -14,9 +16,12 @@ const retrieve = (url, method = "GET", body = {}) => {
     options.body = JSON.stringify(body)
   }
   console.log("Options: ", options)
-  return fetch(url, options)
-    .then(response => response.json())
-    .catch(error => console.error(error))
+  const response = await fetch(url, options)
+  console.log("RESPIONSE:", response.status)
+  const data = await response.json()
+  if (response.ok) {
+    return data
+  } else if (getDigit(response.status, 1) === 4) {
+    throw data
+  }
 }
-
-module.exports = retrieve

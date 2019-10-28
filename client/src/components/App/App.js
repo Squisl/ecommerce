@@ -6,7 +6,8 @@ import Header from "../../routes/Header"
 import Footer from "../../routes/Footer/Footer"
 import Shop from "../../routes/Shop"
 import Loading from "../Loading"
-import Admin from "../../routes/Admin"
+import Dashboard from "../../routes/Dashboard"
+import AdminRoute from "../../hoc/AdminRoute"
 
 const App = ({reload}) => {
   const [loading, setLoading] = useState(true)
@@ -27,7 +28,7 @@ const App = ({reload}) => {
     <div className={styles.app}>
       <BrowserRouter>
         <Switch>
-          <Route exact path="/admin" component={Admin} />
+          <AdminRoute exact path="/dashboard" component={Dashboard} />
           <>
             <Header />
             <Route exact path="/" component={Home} />

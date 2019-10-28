@@ -1,10 +1,10 @@
 import React, {useEffect} from "react"
 import PropTypes from "prop-types"
-import styles from "./Admin.module.css"
+import styles from "./Dashboard.module.css"
 import FormInput from "../../components/FormInput"
 import Button from "../../components/Button"
 
-const Admin = props => {
+const Dashboard = props => {
   useEffect(() => {
     const token = localStorage.getItem("accessToken")
     if (token) {
@@ -29,6 +29,6 @@ const Admin = props => {
   )
 }
 
-Admin.propTypes = {}
+Dashboard.propTypes = {}
 
-export default Admin
+export default Dashboard

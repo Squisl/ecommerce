@@ -4,7 +4,7 @@ const { user } = require("../queries");
 const protect = async (req, res, next) => {
   const token = req.header("Authorization");
   console.log("PROTECT TOKEN:", token);
-  // In the header no token was found
+  // No token was found
   if (!token) {
     return res.status(401).send({ msg: "Unauthorized" });
   }

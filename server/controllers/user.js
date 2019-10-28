@@ -24,7 +24,7 @@ const register = async (req, res) => {
       password: hashedPassword
     });
     // Create refresh and access token
-    const { id, token_version } = newUser;
+    const { id, token_version, role } = newUser;
     const refreshToken = createToken(
       { id, token_version },
       process.env.REFRESH_SECRET,
@@ -42,9 +42,10 @@ const register = async (req, res) => {
       process.env.ACCESS_SECRET,
       5
     );
-    return res
-      .status(201)
-      .send({ token: accessToken, user: { id, first_name, last_name, email } });
+    return res.status(201).send({
+      token: accessToken,
+      user: { id, first_name, last_name, email, role }
+    });
   } catch (e) {
     console.error(e);
     next(e);
@@ -67,7 +68,7 @@ const login = async (req, res) => {
       return res.status(401).send({ msg: "Wrong Password" });
     }
     // Create refresh and access token
-    const { id, token_version, first_name, last_name } = fetchedUser;
+    const { id, token_version, first_name, last_name, role } = fetchedUser;
     const refreshToken = createToken(
       { id, token_version },
       process.env.REFRESH_SECRET,
@@ -87,7 +88,7 @@ const login = async (req, res) => {
     );
     return res.send({
       token: accessToken,
-      user: { id, first_name, last_name, email }
+      user: { id, first_name, last_name, email, role }
     });
   } catch (e) {
     console.error(e);
@@ -100,8 +101,8 @@ const logout = (_, res) => {
 };
 
 const reload = async (req, res) => {
-  const { id, first_name, last_name, email } = req.user;
-  res.send({ id, first_name, last_name, email });
+  const { id, first_name, last_name, email, role } = req.user;
+  res.send({ id, first_name, last_name, email, role });
 };
 
 const refresh_token = async (req, res) => {

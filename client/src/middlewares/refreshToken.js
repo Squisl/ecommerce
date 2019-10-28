@@ -42,6 +42,7 @@ const refreshToken = store => next => action => {
             if (ok) {
               localStorage.setItem("accessToken", accessToken)
             }
+            // TODO: Logout the user
             console.log("Token: ", accessToken)
             next(action)
           })
