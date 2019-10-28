@@ -9,6 +9,7 @@ exports.up = function(knex) {
       .notNullable();
     table.string("password").notNullable();
     table.integer("token_version").defaultTo(0);
+    table.enu("role", ["user", "admin"]).defaultTo("user");
     table.timestamps(true, true);
   });
 };

@@ -44,6 +44,7 @@ export const logout = () => async dispatch => {
 export const reload = setLoading => async dispatch => {
   try {
     const result = await retrieve("/api/user/reload")
+    console.log("RELOAD RESULT: ", result)
     dispatch(receiveUserSession(result))
     setLoading(false)
   } catch (e) {

@@ -40,7 +40,7 @@ const register = async (req, res) => {
     const accessToken = createToken(
       { id, token_version },
       process.env.ACCESS_SECRET,
-      process.env.ACCESS_EXPIRATION
+      5
     );
     return res
       .status(201)
@@ -83,7 +83,7 @@ const login = async (req, res) => {
     const accessToken = createToken(
       { id, token_version },
       process.env.ACCESS_SECRET,
-      process.env.ACCESS_EXPIRATION
+      5
     );
     return res.send({
       token: accessToken,
@@ -91,7 +91,6 @@ const login = async (req, res) => {
     });
   } catch (e) {
     console.error(e);
-    next(e);
   }
 };
 
@@ -105,9 +104,45 @@ const reload = async (req, res) => {
   res.send({ id, first_name, last_name, email });
 };
 
+const refresh_token = async (req, res) => {
+  console.log("REQ Cookies:", req.cookies.jwt);
+  const token = req.cookies.jwt;
+  if (!token) {
+    return res.send({ ok: false, accessToken: "" });
+  }
+  let decoded;
+  let fetchedUser;
+  try {
+    decoded = await jwt.verify(token, process.env.REFRESH_SECRET);
+    console.log("DECOD:", decoded);
+    result = await user.read({
+      id: decoded.id,
+      token_version: decoded.token_version
+    });
+    fetchedUser = result[0];
+  } catch (e) {
+    console.error(e);
+  }
+
+  if (!fetchedUser) {
+    return res.send({ ok: false, accessToken: "" });
+  }
+  console.log("FETCHED_USER:", fetchedUser);
+  const { id, token_version } = fetchedUser;
+  return res.send({
+    ok: true,
+    accessToken: createToken(
+      { id, token_version },
+      process.env.ACCESS_SECRET,
+      5
+    )
+  });
+};
+
 module.exports = {
   register,
   login,
   logout,
-  reload
+  reload,
+  refresh_token
 };

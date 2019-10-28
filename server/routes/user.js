@@ -9,5 +9,6 @@ router.post("/register", check(schemas.register, "body"), user.register);
 router.post("/login", check(schemas.login, "body"), user.login);
 router.get("/logout", user.logout);
 router.get("/reload", protect, user.reload);
+router.post("/refresh_token", user.refresh_token);
 
 module.exports = router;

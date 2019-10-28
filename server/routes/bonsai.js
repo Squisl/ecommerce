@@ -1,8 +1,8 @@
 const { Router } = require("express");
-const { user } = require("../controllers");
+const { bonsai } = require("../controllers");
 
 const router = Router();
 
-router.post("/register", user.register);
+router.post("/", bonsai.create);
 
 module.exports = router;

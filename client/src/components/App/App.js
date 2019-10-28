@@ -6,15 +6,17 @@ import Header from "../../routes/Header"
 import Footer from "../../routes/Footer/Footer"
 import Shop from "../../routes/Shop"
 import Loading from "../Loading"
+import Admin from "../../routes/Admin"
 
 const App = ({reload}) => {
   const [loading, setLoading] = useState(true)
+  const token = localStorage.getItem("accessToken")
   useEffect(() => {
-    const token = localStorage.getItem("accessToken")
     if (token) {
-      return reload(setLoading)
+      reload(setLoading)
+    } else {
+      setLoading(false)
     }
-    setLoading(false)
   }, [])
 
   if (loading) {
@@ -24,12 +26,15 @@ const App = ({reload}) => {
   return (
     <div className={styles.app}>
       <BrowserRouter>
-        <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route path="/shop" component={Shop} />
+          <Route exact path="/admin" component={Admin} />
+          <>
+            <Header />
+            <Route exact path="/" component={Home} />
+            <Route path="/shop" component={Shop} />
+            <Footer />
+          </>
         </Switch>
-        <Footer />
       </BrowserRouter>
     </div>
   )
