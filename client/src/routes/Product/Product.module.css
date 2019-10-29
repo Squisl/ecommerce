@@ -11,7 +11,7 @@
 }
 
 .product__information > *:not(:last-child) {
-  margin-bottom: 1em;
+  margin-bottom: 2rem;
 }
 
 .product__title {
@@ -26,4 +26,10 @@
   border: 1px solid black;
   border-radius: 3px;
   border-spacing: 1em;
+}
+
+.product__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

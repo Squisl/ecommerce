@@ -2,6 +2,8 @@ import React from "react"
 import PropTypes from "prop-types"
 import styles from "./Product.module.css"
 import ImageViewer from "../../components/ImageViewer"
+import QuantitySelector from "../../components/QuantitySelector"
+import Button from "../../components/Button"
 
 const Product = props => {
   return (
@@ -21,25 +23,31 @@ const Product = props => {
           not vulnerable.
         </span>
         <table className={styles.product__table}>
-          <tr>
-            <td>
-              <b>Age:</b>
-            </td>
-            <td>18 years</td>
-          </tr>
-          <tr>
-            <td>
-              <b>Type:</b>
-            </td>
-            <td>Indoor</td>
-          </tr>
-          <tr>
-            <td>
-              <b>Height:</b>
-            </td>
-            <td>61cm</td>
-          </tr>
+          <tbody>
+            <tr>
+              <td>
+                <b>Age:</b>
+              </td>
+              <td>18 years</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Type:</b>
+              </td>
+              <td>Indoor</td>
+            </tr>
+            <tr>
+              <td>
+                <b>Height:</b>
+              </td>
+              <td>61cm</td>
+            </tr>
+          </tbody>
         </table>
+        <div className={styles.product__row}>
+          <QuantitySelector />
+          <Button label="Add to Cart" />
+        </div>
       </div>
     </div>
   )
