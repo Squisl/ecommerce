@@ -1,0 +1,29 @@
+.product {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2em;
+  margin: 5em;
+}
+
+.product__information {
+  display: flex;
+  flex-direction: column;
+}
+
+.product__information > *:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.product__title {
+  font-size: 4rem;
+}
+
+.product__description {
+  line-height: 2;
+}
+
+.product__table {
+  border: 1px solid black;
+  border-radius: 3px;
+  border-spacing: 1em;
+}

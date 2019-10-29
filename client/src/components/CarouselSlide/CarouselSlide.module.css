@@ -1,14 +1,14 @@
 .carousel__slide {
   display: grid;
   grid-template-columns: 1fr 2fr;
+  align-items: center;
   height: 80vh;
 }
 
 .carousel__slide__description {
-  padding: 4em;
   display: flex;
   flex-direction: column;
-  align-content: center;
+  padding: 4em;
 }
 
 .carousel__slide__image {

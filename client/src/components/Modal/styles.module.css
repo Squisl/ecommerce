@@ -31,6 +31,7 @@
   padding: 0;
   border: none;
   font-size: 1.5rem;
+  background: transparent;
   cursor: pointer;
   outline: none;
 }

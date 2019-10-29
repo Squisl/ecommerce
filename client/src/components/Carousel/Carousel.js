@@ -9,7 +9,7 @@ const Carousel = ({children}) => {
   React.useEffect(() => {
     const timer = setTimeout(() => {
       setCurrentSlide((currentSlide + 1) % activeSlide.length)
-    }, 5000)
+    }, 3000)
 
     return () => {
       clearTimeout(timer)

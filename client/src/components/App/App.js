@@ -8,6 +8,7 @@ import Shop from "../../routes/Shop"
 import Loading from "../Loading"
 import Dashboard from "../../routes/Dashboard"
 import AdminRoute from "../../hoc/AdminRoute"
+import Product from "../../routes/Product"
 
 const App = ({reload}) => {
   const [loading, setLoading] = useState(true)
@@ -33,6 +34,7 @@ const App = ({reload}) => {
             <Header />
             <Route exact path="/" component={Home} />
             <Route path="/shop" component={Shop} />
+            <Route path="/product/:id" component={Product} />
             <Footer />
           </>
         </Switch>
