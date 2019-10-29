@@ -1,6 +1,6 @@
 import React from "react"
 import {Link, withRouter} from "react-router-dom"
-import {FaShoppingBag, FaInfo, FaWpforms} from "react-icons/fa"
+import {FaShoppingBag, FaInfo, FaWpforms, FaShoppingCart} from "react-icons/fa"
 import {MdEventNote} from "react-icons/md"
 import styles from "./Header.module.css"
 import Logo from "../../assets/images/logo.png"
@@ -29,6 +29,7 @@ const Header = ({
             />
           )}
           <Button label="Log out" onClick={logout} />
+          <FaShoppingCart />
         </>
       )
     } else {

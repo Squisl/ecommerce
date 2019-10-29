@@ -84,7 +84,7 @@ const login = async (req, res) => {
     const accessToken = createToken(
       { id, token_version },
       process.env.ACCESS_SECRET,
-      5
+      process.env.ACCESS_EXPIRATION
     );
     return res.send({
       token: accessToken,
@@ -135,7 +135,7 @@ const refresh_token = async (req, res) => {
     accessToken: createToken(
       { id, token_version },
       process.env.ACCESS_SECRET,
-      5
+      process.env.ACCESS_EXPIRATION
     )
   });
 };

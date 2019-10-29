@@ -1,0 +1,23 @@
+.dash__form__container {
+  flex: 1;
+  background: var(--light-black);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.dash__form {
+  display: flex;
+  flex-direction: column;
+  width: 20em;
+}
+
+.dash__form > *:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.dash__form__button {
+  background: black;
+  border: 1px solid white;
+  align-self: flex-end;
+}

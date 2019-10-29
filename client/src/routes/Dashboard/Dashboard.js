@@ -1,30 +1,53 @@
 import React, {useEffect} from "react"
 import PropTypes from "prop-types"
+import {Link, NavLink, Route} from "react-router-dom"
 import styles from "./Dashboard.module.css"
-import FormInput from "../../components/FormInput"
-import Button from "../../components/Button"
+import DashBonsai from "../../components/DashBonsai"
+import DashForm from "../../components/DashForm"
 
-const Dashboard = props => {
+const Dashboard = ({match}) => {
   useEffect(() => {
-    const token = localStorage.getItem("accessToken")
-    if (token) {
-    }
+    document.title = "Saisei | Dashboard"
   }, [])
 
+  const routes = (
+    <>
+      <Route exact path={`${match.path}/bonsai`} component={DashBonsai} />
+      <Route path={`${match.path}/bonsai/form`} component={DashForm} />
+    </>
+  )
+
   return (
-    <div className={styles.admin}>
-      <div className={styles.admin__login}>
-        <span className={styles.admin__title}>Dashboard</span>
-        <form className={styles.admin__form}>
-          <FormInput label="Name" />
-          <FormInput label="Password" />
-          <Button
-            label="Log In"
-            type="submit"
-            className={styles.login__button}
-          />
-        </form>
-      </div>
+    <div className={styles.dashboard}>
+      <header className={styles.dashboard__header}>
+        <nav className={styles.dashboard__nav}>
+          <NavLink
+            exact
+            to={match.url}
+            className={styles.dashboard__nav__link}
+            activeClassName={styles.dashboard__nav__link_active}>
+            Home
+          </NavLink>
+          <NavLink
+            to={`${match.url}/bonsai`}
+            className={styles.dashboard__nav__link}
+            activeClassName={styles.dashboard__nav__link_active}>
+            Bonsai
+          </NavLink>
+          <NavLink
+            to="/dashboard/blog"
+            className={styles.dashboard__nav__link}
+            activeClassName={styles.dashboard__nav__link_active}>
+            Blog
+          </NavLink>
+        </nav>
+        <div className={styles.dashboard__header__right}>
+          <Link to="/" className={styles.dashboard__nav__link}>
+            Back To Shop
+          </Link>
+        </div>
+      </header>
+      {routes}
     </div>
   )
 }

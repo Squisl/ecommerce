@@ -1,0 +1,32 @@
+.dashboard__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  background: var(--light-black);
+}
+
+.dashboard__bonsai {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.dashboard__bonsai > *:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.bonsai__create {
+  text-decoration: none;
+  color: white;
+  padding: 0.8em 1em;
+  background: black;
+  border: 1px solid white;
+  border-radius: 3px;
+}
+
+.dashboard__table {
+  border: 1px solid white;
+  color: white;
+  border-spacing: 2em;
+}

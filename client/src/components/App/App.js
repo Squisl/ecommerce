@@ -29,7 +29,7 @@ const App = ({reload}) => {
     <div className={styles.app}>
       <BrowserRouter>
         <Switch>
-          <AdminRoute exact path="/dashboard" component={Dashboard} />
+          <AdminRoute path="/dashboard" component={Dashboard} />
           <>
             <Header />
             <Route exact path="/" component={Home} />

@@ -3,6 +3,7 @@ import thunk from "redux-thunk"
 import user from "../modules/user"
 import modal from "../modules/modal"
 import error from "../modules/error"
+import bonsai from "../modules/bonsai"
 import refreshToken from "../middlewares/refreshToken"
 
 // Enable redux dev tools
@@ -12,6 +13,7 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose
 const reducer = combineReducers({
   user,
   modal,
+  bonsai,
   error,
 })
 

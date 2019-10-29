@@ -22,4 +22,6 @@ html {
   --red: #b22222;
   --yellow: #f1bc31;
   --light-grey: rgb(247, 247, 247);
+  --lighter-black: rgb(40, 40, 40);
+  --light-black: rgb(31, 31, 31);
 }
