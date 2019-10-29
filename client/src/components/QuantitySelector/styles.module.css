@@ -1,0 +1,37 @@
+.quantity__selector__container {
+  position: relative;
+}
+
+.quantity__selector {
+  display: inline-block;
+  border: 1px solid var(--orange);
+  border-radius: 3px;
+}
+
+.quantity__selector__error {
+  font-size: 0.8rem;
+  color: var(--red);
+}
+
+.quantity__selector__input {
+  width: 5em;
+  padding: 1em 0.1em 1em 0.7em;
+  outline: none;
+  text-align: center;
+  border: none;
+}
+
+.quantity__selector__button {
+  font-weight: 700;
+  background: var(--orange);
+  color: white;
+  border: none;
+  padding: 1em;
+  cursor: pointer;
+  outline: none;
+}
+
+.quantity__selector__error {
+  position: absolute;
+  left: 0;
+}
