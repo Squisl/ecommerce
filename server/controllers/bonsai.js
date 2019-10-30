@@ -1,3 +1,4 @@
+const cloudinary = require("cloudinary").v2;
 const { bonsai } = require("../queries");
 
 const create = async (req, res) => {

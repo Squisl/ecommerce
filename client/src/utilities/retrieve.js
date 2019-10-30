@@ -17,7 +17,7 @@ export default async (url, method = "GET", body = {}) => {
   }
   console.log("Options: ", options)
   const response = await fetch(url, options)
-  console.log("RESPIONSE:", response.status)
+  console.log("RESPONSE:", response.status)
   const data = await response.json()
   if (response.ok) {
     return data

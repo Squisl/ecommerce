@@ -9,8 +9,8 @@ export const receiveBonsai = bonsai => ({
   bonsai,
 })
 
-export const createBonsai = bonsai => async dispatch => {
-  const result = await retrieve("/api/bonsai", "POST", bonsai)
+export const createBonsai = data => async dispatch => {
+  const result = await retrieve("/api/bonsai", "POST", data)
   console.log(result)
 }
 
