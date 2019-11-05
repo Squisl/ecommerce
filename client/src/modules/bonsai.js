@@ -10,8 +10,9 @@ export const receiveBonsai = bonsai => ({
 })
 
 export const createBonsai = data => async dispatch => {
-  const result = await retrieve("/api/bonsai", "POST", data)
-  console.log(result)
+  const result = await retrieve("/api/bonsai", "POST", data.bonsai)
+  console.log(result2)
+  dispatch(receiveBonsai(result))
 }
 
 // Initial State of the reducer
@@ -22,6 +23,11 @@ const initialState = {
 
 export default (state = initialState, action) => {
   switch (action.type) {
+    case RECEIVE_BONSAI:
+      return {
+        ...state,
+        all: state.all.concat(action.bonsai),
+      }
     default:
       return state
   }

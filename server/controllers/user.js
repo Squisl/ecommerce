@@ -23,7 +23,7 @@ const register = async (req, res) => {
       email,
       password: hashedPassword
     });
-    // Create refresh and access token
+    // Create refresh token
     const { id, token_version, role } = newUser;
     const refreshToken = createToken(
       { id, token_version },
@@ -37,10 +37,11 @@ const register = async (req, res) => {
       sameSite: true,
       secure: false
     });
+    // Create access token
     const accessToken = createToken(
       { id, token_version },
       process.env.ACCESS_SECRET,
-      5
+      process.env.ACCESS_EXPIRATION
     );
     return res.status(201).send({
       token: accessToken,

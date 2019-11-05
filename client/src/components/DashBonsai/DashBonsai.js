@@ -13,15 +13,17 @@ const DashBonsai = ({match}) => {
         </Link>
         <table className={styles.dashboard__table}>
           <thead>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Description</th>
-            <th>Type</th>
-            <th>Size</th>
-            <th>Age</th>
-            <th>Price</th>
-            <th>Created</th>
-            <th>Updated</th>
+            <tr>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Description</th>
+              <th>Type</th>
+              <th>Size</th>
+              <th>Age</th>
+              <th>Price</th>
+              <th>Created</th>
+              <th>Updated</th>
+            </tr>
           </thead>
           <tbody></tbody>
         </table>

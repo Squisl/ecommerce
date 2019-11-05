@@ -5,6 +5,7 @@ import FormInput from "../FormInput"
 import FormTextarea from "../FormTextarea"
 import Button from "../Button"
 import DragAndDrop from "../DragAndDrop"
+import retrieve from "../../utilities/retrieve"
 
 const DashForm = ({createBonsai}) => {
   const [name, setName] = useState("")
@@ -21,7 +22,7 @@ const DashForm = ({createBonsai}) => {
     setImages(images.concat(...files))
   }
 
-  const handleSubmit = e => {
+  const handleSubmit = async e => {
     e.preventDefault()
 
     const data = new FormData()
@@ -29,11 +30,8 @@ const DashForm = ({createBonsai}) => {
       data.append("file", image)
       console.log("Image file", image)
     })
-    console.log("DAAATTAAA", data)
-    for (let entry of data.entries()) {
-      console.log("ENTRYY", entry)
-    }
-    createBonsai({
+
+    const newBonsai = await retrieve("/api/bonsai/", "POST", {
       name,
       description,
       age,
@@ -41,6 +39,14 @@ const DashForm = ({createBonsai}) => {
       size,
       price,
     })
+    console.log("NEW BONSAI:", newBonsai)
+
+    fetch(`/api/bonsai/upload_images/${newBonsai.id}`, {
+      method: "POST",
+      body: data,
+    })
+      .then(res => res)
+      .catch(err => console.log("WOW", err))
   }
 
   return (
