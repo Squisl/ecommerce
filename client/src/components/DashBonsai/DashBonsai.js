@@ -1,16 +1,19 @@
-import React from "react"
+import React, {useEffect} from "react"
 import PropTypes from "prop-types"
-import {Link, Route} from "react-router-dom"
+import {Link} from "react-router-dom"
 import styles from "./DashBonsai.module.css"
-import DashForm from "../DashForm"
 
-const DashBonsai = ({match}) => {
+const DashBonsai = ({match, fetchBonsais, bonsais}) => {
+  useEffect(() => {
+    fetchBonsais()
+  }, [])
+
   return (
     <div className={styles.dashboard__container}>
-      <div className={styles.dashboard__bonsai}>
-        <Link to={`${match.path}/form`} className={styles.bonsai__create}>
-          Create
-        </Link>
+      <Link to={`${match.path}/form`} className={styles.bonsai__create}>
+        Create
+      </Link>
+      <div className={styles.table__container}>
         <table className={styles.dashboard__table}>
           <thead>
             <tr>
@@ -25,13 +28,29 @@ const DashBonsai = ({match}) => {
               <th>Updated</th>
             </tr>
           </thead>
-          <tbody></tbody>
+          <tbody>
+            {bonsais.map(bonsai => (
+              <tr key={bonsai.name}>
+                <td>{bonsai.id}</td>
+                <td>{bonsai.name}</td>
+                <td>{bonsai.description}</td>
+                <td>{bonsai.type}</td>
+                <td>{bonsai.size}</td>
+                <td>{bonsai.age}</td>
+                <td>{bonsai.price}</td>
+                <td>{bonsai.created_at}</td>
+                <td>{bonsai.updated_at}</td>
+              </tr>
+            ))}
+          </tbody>
         </table>
       </div>
     </div>
   )
 }
 
-DashBonsai.propTypes = {}
+DashBonsai.propTypes = {
+  match: PropTypes.object.isRequired,
+}
 
 export default DashBonsai

@@ -19,6 +19,7 @@ const DashForm = ({createBonsai}) => {
   const update = fn => e => fn(e.target.value)
 
   const handleDrop = files => {
+    if (images.length === 4) return
     setImages(images.concat(...files))
   }
 
@@ -79,19 +80,16 @@ const DashForm = ({createBonsai}) => {
         />
       </form>
       <DragAndDrop drop={handleDrop}>
-        <div style={{height: 300, width: 250, border: "1px solid white"}}>
+        <div className={styles.dash__form__images}>
           {images.map(image => (
             <img
               key={image.name}
-              style={{width: "2em"}}
+              className={styles.image__preview}
               src={URL.createObjectURL(image)}
             />
           ))}
         </div>
       </DragAndDrop>
-      <button onClick={() => console.log(images)}>
-        Console log the images
-      </button>
     </div>
   )
 }

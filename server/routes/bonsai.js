@@ -15,7 +15,10 @@ const storage = multer.diskStorage({
 
 const upload = multer({ storage: storage }).array("file");
 
-router.post("/", bonsai.create);
+router
+  .route("/")
+  .get(bonsai.readAll)
+  .post(bonsai.create);
 router.post("/upload_images/:bonsai_id", upload, bonsai.upload_images);
 
 module.exports = router;

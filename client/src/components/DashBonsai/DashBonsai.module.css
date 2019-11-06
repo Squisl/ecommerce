@@ -1,18 +1,14 @@
 .dashboard__container {
+  flex: 1;
+  min-height: 0;
   display: flex;
+  flex-direction: column;
   justify-content: center;
-  align-items: center;
-  height: 100vh;
+  padding: 2em;
   background: var(--light-black);
 }
 
-.dashboard__bonsai {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-}
-
-.dashboard__bonsai > *:not(:last-child) {
+.dashboard__container > *:not(:last-child) {
   margin-bottom: 1em;
 }
 
@@ -23,10 +19,35 @@
   background: black;
   border: 1px solid white;
   border-radius: 3px;
+  align-self: flex-start;
+}
+
+.table__container {
+  overflow-y: auto;
+  border: 1px solid white;
+  border-radius: 3px;
 }
 
 .dashboard__table {
-  border: 1px solid white;
   color: white;
-  border-spacing: 2em;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.dashboard__table thead th {
+  position: sticky;
+  top: 0;
+  padding: 1em;
+  text-align: center;
+  background: var(--light-black);
+}
+
+.dashboard__table td {
+  text-align: center;
+  padding: 1em;
+}
+
+.dashboard__table tr:hover {
+  background: rgba(255, 255, 255, 0.1);
+  cursor: pointer;
 }

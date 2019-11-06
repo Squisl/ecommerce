@@ -12,8 +12,8 @@ const Dashboard = ({match}) => {
 
   const routes = (
     <>
-      <Route exact path={`${match.path}/bonsai`} component={DashBonsai} />
-      <Route path={`${match.path}/bonsai/form`} component={DashForm} />
+      <Route exact path={`${match.path}`} component={DashBonsai} />
+      <Route path={`${match.path}/form`} component={DashForm} />
     </>
   )
 
@@ -22,23 +22,16 @@ const Dashboard = ({match}) => {
       <header className={styles.dashboard__header}>
         <nav className={styles.dashboard__nav}>
           <NavLink
-            exact
-            to={match.url}
-            className={styles.dashboard__nav__link}
-            activeClassName={styles.dashboard__nav__link_active}>
-            Home
-          </NavLink>
-          <NavLink
-            to={`${match.url}/bonsai`}
+            to={`${match.path}`}
             className={styles.dashboard__nav__link}
             activeClassName={styles.dashboard__nav__link_active}>
             Bonsai
           </NavLink>
           <NavLink
-            to="/dashboard/blog"
+            to={`${match.path}/users`}
             className={styles.dashboard__nav__link}
             activeClassName={styles.dashboard__nav__link_active}>
-            Blog
+            Users
           </NavLink>
         </nav>
         <div className={styles.dashboard__header__right}>
