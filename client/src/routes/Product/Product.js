@@ -1,26 +1,39 @@
-import React from "react"
+import React, {useEffect, useState} from "react"
 import PropTypes from "prop-types"
 import styles from "./Product.module.css"
 import ImageViewer from "../../components/ImageViewer"
 import QuantitySelector from "../../components/QuantitySelector"
 import Button from "../../components/Button"
+import Loading from "../../components/Loading"
 
-const Product = props => {
+const Product = ({match, bonsai: bonsaiState, fetchBonsai}) => {
+  const [loading, setLoading] = useState(true)
+
+  useEffect(() => {
+    console.log("Bonsai State", bonsaiState)
+    const product_id = match.params.id
+    const found = bonsaiState.all.find(bonsai => bonsai.id === product_id)
+    if (found) {
+      console.log("found", found)
+    } else {
+      console.log("Fetch Bonsai", product_id)
+      fetchBonsai(product_id, setLoading)
+    }
+  }, [])
+
+  if (loading) {
+    return <Loading />
+  }
+
   return (
     <div className={styles.product}>
-      <ImageViewer />
+      <ImageViewer images={bonsaiState.selected.images} />
       <div className={styles.product__information}>
-        <span className={styles.product__title}>Japanese White Pine</span>
+        <span className={styles.product__title}>
+          {bonsaiState.selected.name}
+        </span>
         <span className={styles.product__description}>
-          Bonsai fig tree (Banyan fig, Ficus retusa) are well suited for styling
-          as a Bonsai and is an easy to handle indoor bonsai. The banyan fig
-          (botanical Ficus retusa, family Moraceae) is originated in South- and
-          Southeast asia. In nature the tree is fast growing up to 15m height.
-          At a high air humidity the fig forms many attractive air roots. A
-          bright location and regularly watering is the basis for a long life of
-          this uncomplicated indoor bonsai. Fig trees bonsai tolerates cutting
-          very well. Ficus Bonsai are rarely attacked by pests and disease are
-          not vulnerable.
+          {bonsaiState.selected.description}
         </span>
         <table className={styles.product__table}>
           <tbody>
@@ -28,19 +41,19 @@ const Product = props => {
               <td>
                 <b>Age:</b>
               </td>
-              <td>18 years</td>
+              <td>{bonsaiState.selected.age} years</td>
             </tr>
             <tr>
               <td>
                 <b>Type:</b>
               </td>
-              <td>Indoor</td>
+              <td>{bonsaiState.selected.type}</td>
             </tr>
             <tr>
               <td>
                 <b>Height:</b>
               </td>
-              <td>61cm</td>
+              <td>{bonsaiState.selected.size}cm</td>
             </tr>
           </tbody>
         </table>

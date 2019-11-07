@@ -27,8 +27,16 @@ export const createBonsai = data => async dispatch => {
   dispatch(receiveBonsai(result))
 }
 
+export const fetchBonsai = (bonsai_id, setLoading) => async dispatch => {
+  console.log("bonsai id", bonsai_id)
+  const result = await retrieve(`/api/bonsai/${bonsai_id}`, "GET")
+  console.log("Fetch bonsai", result)
+  dispatch(receiveBonsai(result[0]))
+  setLoading(false)
+}
+
 export const fetchBonsais = () => async dispatch => {
-  const result = await retrieve("api/bonsai/", "GET")
+  const result = await retrieve("/api/bonsai/", "GET")
   console.log("Bonsais:", result)
   dispatch(receiveBonsais(result))
 }
@@ -43,7 +51,6 @@ export const deleteBonsai = bonsai_id => async dispatch => {
 const initialState = {
   selected: null,
   all: [],
-  images: [],
 }
 
 export default (state = initialState, action) => {
@@ -51,7 +58,7 @@ export default (state = initialState, action) => {
     case RECEIVE_BONSAI:
       return {
         ...state,
-        all: state.all.concat(action.bonsai),
+        selected: action.bonsai,
       }
     case RECEIVE_BONSAIS:
       return {

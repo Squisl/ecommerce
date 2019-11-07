@@ -1,9 +1,12 @@
 import {connect} from "react-redux"
 import Product from "./Product"
+import {fetchBonsai} from "../../modules/bonsai"
 
-const mapStateToProps = state => ({})
+const mapStateToProps = state => ({
+  bonsai: state.bonsai,
+})
 
-const mapDispatchToProps = {}
+const mapDispatchToProps = {fetchBonsai}
 
 export default connect(
   mapStateToProps,

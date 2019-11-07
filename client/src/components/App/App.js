@@ -13,6 +13,7 @@ import Product from "../../routes/Product"
 const App = ({reload}) => {
   const [loading, setLoading] = useState(true)
   const token = localStorage.getItem("accessToken")
+
   useEffect(() => {
     if (token) {
       reload(setLoading)

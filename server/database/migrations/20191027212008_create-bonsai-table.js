@@ -6,7 +6,7 @@ exports.up = function(knex) {
       table.string("description").notNullable();
       table.integer("age").notNullable();
       table.enu("type", ["indoor", "outdoor"]);
-      table.enu("size", ["large", "medium", "miniature"]);
+      table.integer("size").notNullable();
       table.integer("price").notNullable();
       table.timestamps(true, true);
     })

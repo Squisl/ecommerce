@@ -3,6 +3,10 @@
   flex-direction: column;
   text-decoration: none;
   color: inherit;
+  border: 1px solid black;
+  border-radius: 3px;
+  overflow: hidden;
+  padding: 1em;
 }
 
 .product__image {

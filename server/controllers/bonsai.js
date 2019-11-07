@@ -10,6 +10,17 @@ cloudinary.config({
   api_secret: "PQu_lPY9AEqc5Coe42CmsUMGkd8"
 });
 
+const read = async (req, res) => {
+  const { bonsai_id } = req.params;
+  try {
+    const result = await bonsai.read({ id: bonsai_id });
+    console.log("Result of read", result);
+    res.send(result);
+  } catch (e) {
+    console.error(e);
+  }
+};
+
 const readAll = async (req, res) => {
   try {
     const bonsais = await bonsai.readAll();
@@ -67,6 +78,7 @@ const del = async (req, res) => {
 };
 
 module.exports = {
+  read,
   readAll,
   create,
   upload_images,

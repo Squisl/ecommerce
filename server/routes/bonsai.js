@@ -22,6 +22,7 @@ router
 router.post("/upload_images/:bonsai_id", upload, bonsai.upload_images);
 router
   .route("/:bonsai_id")
+  .get(bonsai.read)
   .post(bonsai.update)
   .delete(bonsai.del);
 

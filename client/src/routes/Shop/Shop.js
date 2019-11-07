@@ -5,16 +5,17 @@ import Sidebar from "../../components/Sidebar/Sidebar"
 import Pagination from "../../components/Pagination/Pagination"
 import ShopGrid from "../../components/ShopGrid/ShopGrid"
 
-const Shop = props => {
+const Shop = ({fetchBonsais, bonsais}) => {
   useEffect(() => {
     document.title = "Saisei | Shop"
+    fetchBonsais()
   }, [])
 
   return (
     <div className={styles.shop}>
       <Sidebar />
       <div className={styles.shop__main}>
-        <ShopGrid />
+        <ShopGrid bonsais={bonsais} />
         <Pagination />
       </div>
     </div>
