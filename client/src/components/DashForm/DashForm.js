@@ -1,4 +1,4 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import PropTypes from "prop-types"
 import styles from "./DashForm.module.css"
 import FormInput from "../FormInput"
@@ -7,7 +7,7 @@ import Button from "../Button"
 import DragAndDrop from "../DragAndDrop"
 import retrieve from "../../utilities/retrieve"
 
-const DashForm = ({createBonsai}) => {
+const DashForm = ({createBonsai, location}) => {
   const [name, setName] = useState("")
   const [description, setDescription] = useState("")
   const [age, setAge] = useState(null)
@@ -15,6 +15,19 @@ const DashForm = ({createBonsai}) => {
   const [size, setSize] = useState(null)
   const [price, setPrice] = useState(null)
   const [images, setImages] = useState([])
+
+  useEffect(() => {
+    if (location.state) {
+      const {bonsai} = location.state
+      setName(bonsai.name)
+      setDescription(bonsai.description)
+      setAge(bonsai.age)
+      setType(bonsai.type)
+      setSize(bonsai.size)
+      setPrice(bonsai.price)
+      setImages(bonsai.images)
+    }
+  }, [])
 
   const update = fn => e => fn(e.target.value)
 
@@ -28,26 +41,42 @@ const DashForm = ({createBonsai}) => {
 
     const data = new FormData()
     images.forEach(image => {
-      data.append("file", image)
+      typeof image === "object" && data.append("file", image)
       console.log("Image file", image)
     })
-
-    const newBonsai = await retrieve("/api/bonsai/", "POST", {
-      name,
-      description,
-      age,
-      type,
-      size,
-      price,
-    })
-    console.log("NEW BONSAI:", newBonsai)
-
-    fetch(`/api/bonsai/upload_images/${newBonsai.id}`, {
-      method: "POST",
-      body: data,
-    })
-      .then(res => res)
-      .catch(err => console.log("WOW", err))
+    console.log("DDDDDD", data.entries().next().done)
+    let newBonsai
+    console.log("Loc bons:", location.state)
+    if (location.state) {
+      const {id} = location.state.bonsai
+      // Update the bonsai
+      newBonsai = await retrieve(`/api/bonsai/${id}`, "POST", {
+        name,
+        description,
+        age,
+        type,
+        size,
+        price,
+      })
+    } else {
+      newBonsai = await retrieve("/api/bonsai/", "POST", {
+        name,
+        description,
+        age,
+        type,
+        size,
+        price,
+      })
+      console.log("NEW BONSAI:", newBonsai)
+    }
+    if (!data.entries().next().done) {
+      fetch(`/api/bonsai/upload_images/${newBonsai.id}`, {
+        method: "POST",
+        body: data,
+      })
+        .then(res => console.log("IGGM:", res))
+        .catch(err => console.log("WOW", err))
+    }
   }
 
   return (
@@ -85,7 +114,9 @@ const DashForm = ({createBonsai}) => {
             <img
               key={image.name}
               className={styles.image__preview}
-              src={URL.createObjectURL(image)}
+              src={
+                typeof image === "string" ? image : URL.createObjectURL(image)
+              }
             />
           ))}
         </div>

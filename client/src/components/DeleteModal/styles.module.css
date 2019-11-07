@@ -1,0 +1,23 @@
+.delete__modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.delete__modal > *:not(:last-child) {
+  margin-bottom: 1em;
+}
+
+.delete__modal__message {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.delete__modal__buttons {
+  display: flex;
+}
+
+.delete__modal__buttons > *:not(:last-child) {
+  margin-right: 1em;
+}

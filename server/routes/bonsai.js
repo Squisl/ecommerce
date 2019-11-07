@@ -20,5 +20,9 @@ router
   .get(bonsai.readAll)
   .post(bonsai.create);
 router.post("/upload_images/:bonsai_id", upload, bonsai.upload_images);
+router
+  .route("/:bonsai_id")
+  .post(bonsai.update)
+  .delete(bonsai.del);
 
 module.exports = router;

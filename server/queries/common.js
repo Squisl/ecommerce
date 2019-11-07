@@ -17,10 +17,13 @@ const read = table => async data => {
 };
 
 const update = table => async (criteria, data) => {
+  console.log("criteria", criteria);
+  console.log("data", data);
   const result = await database
     .table(table)
     .update(data)
-    .where(criteria);
+    .where(criteria)
+    .returning("*");
 
   return result;
 };
@@ -29,9 +32,10 @@ const del = table => async criteria => {
   const result = await database
     .table(table)
     .del()
-    .where(criteria);
+    .where(criteria)
+    .returning("*");
 
-  return result;
+  return result[0];
 };
 
 module.exports = table => ({

@@ -38,17 +38,38 @@ const upload_images = async (req, res) => {
   );
   const fieldToInsert = images.map(image => ({
     bonsai_id,
+    public_id: image.public_id,
     image: image.secure_url
   }));
   const result = await bonsai_images.create(fieldToInsert);
   console.log("Resss", result);
+  res.send(result);
   for (let i = 0; i < req.files.length; i++) {
     await unlinkAsync(req.files[i].path);
+  }
+};
+
+const update = async (req, res) => {
+  const { bonsai_id } = req.params;
+  const updatedBonsai = await bonsai.update({ id: bonsai_id }, req.body);
+  res.send(updatedBonsai);
+};
+
+const del = async (req, res) => {
+  const { bonsai_id } = req.params;
+  try {
+    const deletedBonsai = await bonsai.del({ id: bonsai_id });
+    console.log("Deleted Bonsai:", deletedBonsai);
+    res.send(deletedBonsai);
+  } catch (e) {
+    console.error(e);
   }
 };
 
 module.exports = {
   readAll,
   create,
-  upload_images
+  upload_images,
+  update,
+  del
 };

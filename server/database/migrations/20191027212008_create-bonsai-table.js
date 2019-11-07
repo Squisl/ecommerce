@@ -16,7 +16,9 @@ exports.up = function(knex) {
         .integer("bonsai_id")
         .references("id")
         .inTable("bonsai")
+        .onDelete("CASCADE")
         .notNullable();
+      table.string("public_id").notNullable();
       table.string("image").notNullable();
       table.timestamps(true, true);
     });
