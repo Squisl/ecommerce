@@ -62,12 +62,12 @@ const Home = () => {
       <section className={styles.home__best__sellers}>
         <p className={styles.best__sellers__title}>Best Sellers</p>
         <div className={styles.best__sellers__grid}>
+          {/* <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
           <ProductCard />
-          <ProductCard />
-          <ProductCard />
+          <ProductCard /> */}
         </div>
       </section>
     </div>

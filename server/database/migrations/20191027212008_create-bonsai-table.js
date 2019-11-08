@@ -3,7 +3,7 @@ exports.up = function(knex) {
     .createTable("bonsai", table => {
       table.increments();
       table.string("name").notNullable();
-      table.string("description").notNullable();
+      table.string("description", 500).notNullable();
       table.integer("age").notNullable();
       table.enu("type", ["indoor", "outdoor"]);
       table.integer("size").notNullable();

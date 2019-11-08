@@ -5,7 +5,7 @@ import styles from "./ProductCard.module.css"
 import {FaStar} from "react-icons/fa"
 
 const ProductCard = ({product}) => {
-  const {id, name, description, age, type, size, price, images} = product
+  const {id, name, description, age, type, size, price, images} = product || {}
   return (
     <Link to={`/product/${id}`} className={styles.product__card}>
       <img src={images[0]} alt="" className={styles.product__image} />

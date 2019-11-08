@@ -38,9 +38,17 @@ const del = table => async criteria => {
   return result[0];
 };
 
+const count = table => async (criteria = {}) => {
+  const result = await database(table)
+    .count("*")
+    .where(criteria);
+  return result[0].count;
+};
+
 module.exports = table => ({
   create: create(table),
   read: read(table),
   update: update(table),
-  del: del(table)
+  del: del(table),
+  count: count(table)
 });

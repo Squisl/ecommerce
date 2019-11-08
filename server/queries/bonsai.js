@@ -15,8 +15,18 @@ const read = async ({ id }) => {
   return result.rows;
 };
 
+const pagination = async (currentPage, pageLimit) => {
+  const offset = (currentPage - 1) * pageLimit;
+  const result = await database("bonsai")
+    .select()
+    .offset(offset)
+    .limit(pageLimit);
+  return result;
+};
+
 module.exports = {
   ...common("bonsai"),
   readAll,
-  read
+  read,
+  pagination
 };

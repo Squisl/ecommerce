@@ -77,11 +77,29 @@ const del = async (req, res) => {
   }
 };
 
+const pagination = async (req, res) => {
+  const { current_page, page_limit } = req.params;
+
+  const bonsais = await bonsai.pagination(
+    parseInt(current_page),
+    parseInt(page_limit)
+  );
+  console.log("Bonsais pagination", bonsais);
+  res.send(bonsais);
+};
+
+const count = async (req, res) => {
+  const result = await bonsai.count();
+  res.send(result);
+};
+
 module.exports = {
   read,
   readAll,
   create,
   upload_images,
   update,
-  del
+  del,
+  pagination,
+  count
 };
